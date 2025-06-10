@@ -25,10 +25,19 @@ class PDFRoundupApp:
         self.root = root
         root.title("PDF Round-Up")
         root.geometry("800x600")
-        root.iconbitmap("app_icon.ico")
+        if os.path.exists("app_icon.ico"):
+            root.iconbitmap("app_icon.ico")
+        
+        if os.path.exists("banner.png"):
+            banner = tk.PhotoImage(file="banner.png")
+            splash = tk.Label(root, image=banner, width=500, height=60)
+            splash.image = banner
+        else:
+            splash = tk.Label(root, text="PDF Round-Up", font=("Arial", 24), width=500, height=2)
+        
+        splash.pack(pady=5)
 
         # Splash/banner
-        banner = tk.PhotoImage(file="banner.png")
         splash = tk.Label(root, image=banner, width=500, height=60)
         splash.image = banner
         splash.pack(pady=5)
